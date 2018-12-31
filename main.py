@@ -14,7 +14,7 @@ class MainApp(object):
         self.v.present('fullscreen')
         self.v['goBtn'].action = self.go_tapped
         self.v['back_button'].action = self.wvd.go_back
-        self.wv.load_url('about:welcome')
+        self.wv.load_url('file://sdf.org:70/')
         
     @ui.in_background
     def go_tapped(self, sender):
