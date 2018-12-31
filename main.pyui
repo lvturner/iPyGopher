@@ -1,0 +1,77 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{5, 5}, {936, 32}}",
+        "class" : "TextField",
+        "attributes" : {
+          "uuid" : "F9572F28-A018-4A81-807D-DA989712CD90",
+          "font_size" : 17,
+          "frame" : "{{140, 144}, {200, 32}}",
+          "alignment" : "left",
+          "autocorrection_type" : "no",
+          "text" : "",
+          "placeholder" : "Address",
+          "font_name" : "<System>",
+          "spellchecking_type" : "no",
+          "class" : "TextField",
+          "name" : "addressBar",
+          "flex" : "W"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{949, 5}, {70, 32}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "546C3870-7B74-4BB1-8046-D4DCBE7B7B2A",
+          "font_size" : 15,
+          "corner_radius" : 5,
+          "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "frame" : "{{200, 144}, {80, 32}}",
+          "border_width" : 1,
+          "custom_attributes" : "",
+          "title" : "Go",
+          "action" : "",
+          "class" : "Button",
+          "name" : "goBtn",
+          "flex" : "LB"
+        },
+        "selected" : true
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{0, 40}, {1024, 728}}",
+        "class" : "WebView",
+        "attributes" : {
+          "scales_to_fit" : true,
+          "frame" : "{{140, 60}, {200, 200}}",
+          "flex" : "WH",
+          "class" : "WebView",
+          "name" : "webview",
+          "uuid" : "8D3E686A-6C24-4454-A0F2-FCDA3FDC356F"
+        },
+        "selected" : false
+      }
+    ],
+    "frame" : "{{0, 0}, {1024, 768}}",
+    "class" : "View",
+    "attributes" : {
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Gopher",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
