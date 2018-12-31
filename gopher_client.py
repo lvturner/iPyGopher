@@ -44,6 +44,8 @@ class GopherClient(object):
     def get(self, host, port, selector):
         print(port)
         print("Connecting to gopher with: " + host + "/" + selector)
+        self.curr_host = host
+        self.curr_port = port
         HOST = host    # The remote host
         PORT = int(port)              # The same port as used by the server
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -55,7 +57,14 @@ class GopherClient(object):
                 if not temp:
                     break
                 data += temp
-                
-        return self.parse_content(str(data.decode('UTF-8')))
+        #print(str(data).replace('\\r\\n', '\r\n'))
+        #Getting too tired and stupid now...
+        try:
+            content = self.parse_content(str(data.decode('UTF-8')))
+        except:
+            content = "<pre>" + str(data.decode('UTF-8')) + "</pre>"
+        
+        return content
+
         
     

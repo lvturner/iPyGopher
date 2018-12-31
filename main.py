@@ -9,7 +9,7 @@ class MainApp(object):
         self.v['webview'].delegate = WebViewDelegate()
         self.wv = self.v['webview']
         self.ab = self.v['addressBar']
-        self.v.present('sheet')
+        self.v.present('fullscreen')
         self.v['goBtn'].action = self.go_tapped
         self.wv.load_url('file://sdf.org:70/phlogs')
         
