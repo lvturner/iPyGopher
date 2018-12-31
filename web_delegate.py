@@ -12,18 +12,12 @@ class WebViewDelegate (object):
             a {
                 text-decoration: none;
             }
-            div {
-                margin: auto;
-                width: 75%;
-            }
         </style>
         </head>
             <body>
-            <div id="content">
     """
     
     footer = """
-        </div>
         </body>
     </html>
     """

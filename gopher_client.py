@@ -60,7 +60,7 @@ class GopherClient(object):
         #print(str(data).replace('\\r\\n', '\r\n'))
         #Getting too tired and stupid now...
         try:
-            content = self.parse_content(str(data.decode('UTF-8')))
+            content = self.parse_content(str(data.decode('UTF-8', errors="ignore")))
         except:
             content = "<pre>" + str(data.decode('UTF-8')) + "</pre>"
         
