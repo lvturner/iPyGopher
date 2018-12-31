@@ -43,11 +43,7 @@ class GopherClient(object):
                 
     def get(self, type, host, port, selector):
         print(type)
-        print("Connecting to gopher with: " + host + "/" + selector)
-        if type == '7':
-            print("Type is search")
-            search = console.input_alert("Enter search term")
-            selector += "?" + search
+            
         self.curr_host = host
         self.curr_port = port
         HOST = host    # The remote host

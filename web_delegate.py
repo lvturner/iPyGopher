@@ -1,3 +1,4 @@
+import console
 from gopher_client import GopherClient
 from gopher_item import GopherItem
 
@@ -84,17 +85,24 @@ class WebViewDelegate (object):
         print("load_gopher")
         print(url)
         if url.startswith('file://'):
-            self.history.append(url)
-            self.main.ab.text = url[9:]
             #lazy hack
             self.wv = webview
             print("Loading gophers")
             item = self.parse_url(url)
-            #item = GopherItem()
-            #item.host = 'sdf.org'
-            #item.port = 70
-            #item.selector = '/phlogs'
+            if item.type == '7' and not "?" in item.selector:
+                # only prompt if the selector doesn't have a search term
+                print("Type is search")
+                search = console.input_alert("Enter search term")
+                item.selector += "?" + search
+                url += "?" + search #laaazzzy
+            elif type == '9' or type == 'g' or type == '4' or type == '5':
+                console.alert("Binary file downloads currently not supported")
+                return
+            self.history.append(url)
+            self.main.ab.text = url[9:]
+
             g = GopherClient()
+            
             txt = g.get(item.type, item.host, item.port, item.selector)
             webview.load_html(self.header + txt + self.footer)
             
@@ -109,4 +117,6 @@ class WebViewDelegate (object):
         # get rid of the current url... this feels wrong, probably is
         if len(self.history) > 1:
             self.history.pop()
-            self.wv.load_url(self.history.pop())
+            load_url = self.history.pop()
+            print("Loading url: " + load_url)
+            self.wv.load_url(load_url)
