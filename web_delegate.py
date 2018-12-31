@@ -1,4 +1,5 @@
 import console
+import webbrowser
 from gopher_client import GopherClient
 from gopher_item import GopherItem
 
@@ -32,6 +33,10 @@ class WebViewDelegate (object):
     
     def webview_should_start_load(self, webview, url, nav_type):
         print(url)
+        if "file://URL:" in url:
+            url = url.replace("file://URL:", 'safari-')
+            webbrowser.open(url)
+            return False
         self.url = url
         return True
         
@@ -63,6 +68,8 @@ class WebViewDelegate (object):
         
     def parse_url(self, url):
         item = GopherItem()
+        print("Using url: " + url)
+        item.url = url
         type_host_port = url.split('/')[2].split(":")
         print(type_host_port)
         
@@ -95,8 +102,13 @@ class WebViewDelegate (object):
                 search = console.input_alert("Enter search term")
                 item.selector += "?" + search
                 url += "?" + search #laaazzzy
-            elif type == '9' or type == 'g' or type == '4' or type == '5':
-                console.alert("Binary file downloads currently not supported")
+            elif item.type == '9' or item.type == 'g' or item.type == '4' or item.type == '5':
+                print("Unsupported link: " + url)
+                console.alert("Binary file download currently not supported")
+                return
+            elif item.type == 'h':
+                print(url)
+                console.alert("H")
                 return
             self.history.append(url)
             self.main.ab.text = url[9:]
@@ -105,9 +117,7 @@ class WebViewDelegate (object):
             
             txt = g.get(item.type, item.host, item.port, item.selector)
             webview.load_html(self.header + txt + self.footer)
-            
-            return True
-        return False
+        return True
         
     def go_back(self, sender):
         print("Go back called")

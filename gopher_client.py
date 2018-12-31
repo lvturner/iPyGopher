@@ -15,6 +15,7 @@ class GopherClient(object):
         return data
     
     def build_item(self, data):
+        #print("Building from: " + data)
         item = GopherItem()
         if not data or data == '.':
             return
@@ -25,7 +26,7 @@ class GopherClient(object):
         item.selector = sp[1]
         item.host = sp[2]
         item.port = sp[3]
-               
+        print("Selector: " + item.selector)      
         return item
     
     def build_html(self, data):
@@ -34,7 +35,9 @@ class GopherClient(object):
             item = data[i]
             if not item:
                 break
-            if item.type == 'i':
+            if item.type == 'h':
+                ret += "<a href='file://" + item.selector + "'>" + item.name + "</a>"
+            elif item.type == 'i':
                 ret += item.name
             else:
                 ret += "<a href='file://" + item.type + "_" + item.host + ":" + item.port + item.selector + "'>" + item.name + "</a>"
