@@ -12,6 +12,9 @@ class WebViewDelegate (object):
             a {
                 text-decoration: none;
             }
+            pre {
+            	font-family: "Courier New", Courier, monospace;
+            }
         </style>
         </head>
             <body>
@@ -47,7 +50,7 @@ class WebViewDelegate (object):
         pass
         
     def webview_did_fail_load(self, webview, error_code, error_msg):
-        #print("webview failed")
+        print("webview failed")
         #print(error_code)
         #print(error_msg)
         pass
@@ -59,13 +62,15 @@ class WebViewDelegate (object):
         
     def parse_url(self, url):
         item = GopherItem()
-        host_port = url.split('/')[2].split(":")
+        type_host_port = url.split('/')[2].split(":")
+        print(type_host_port)
         
-        item.host = host_port[0]
-        if not host_port[1]:
+        item.type = type_host_port[0].split("_")[0]
+        item.host = type_host_port[0].split("_")[1]
+        if not type_host_port[1]:
             item.port = 70
         else:
-            item.port = host_port[1]
+            item.port = type_host_port[1]
         
         selectors = url.split('/')[3:]
         item.selector = ''
@@ -80,7 +85,7 @@ class WebViewDelegate (object):
         print(url)
         if url.startswith('file://'):
             self.history.append(url)
-            self.main.ab.text = url[7:]
+            self.main.ab.text = url[9:]
             #lazy hack
             self.wv = webview
             print("Loading gophers")
@@ -90,7 +95,7 @@ class WebViewDelegate (object):
             #item.port = 70
             #item.selector = '/phlogs'
             g = GopherClient()
-            txt = g.get(item.host, item.port, item.selector)
+            txt = g.get(item.type, item.host, item.port, item.selector)
             webview.load_html(self.header + txt + self.footer)
             
             return True

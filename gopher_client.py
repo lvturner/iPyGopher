@@ -37,13 +37,17 @@ class GopherClient(object):
             if item.type == 'i':
                 ret += item.name
             else:
-                ret += "<a href='file://" + item.host + ":" + item.port + item.selector + "'>" + item.name + "</a>"
+                ret += "<a href='file://" + item.type + "_" + item.host + ":" + item.port + item.selector + "'>" + item.name + "</a>"
             ret += "<br />"
         return ret
                 
-    def get(self, host, port, selector):
-        print(port)
+    def get(self, type, host, port, selector):
+        print(type)
         print("Connecting to gopher with: " + host + "/" + selector)
+        if type == '7':
+            print("Type is search")
+            search = console.input_alert("Enter search term")
+            selector += "?" + search
         self.curr_host = host
         self.curr_port = port
         HOST = host    # The remote host

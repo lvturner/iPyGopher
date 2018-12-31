@@ -14,14 +14,14 @@ class MainApp(object):
         self.v.present('fullscreen')
         self.v['goBtn'].action = self.go_tapped
         self.v['back_button'].action = self.wvd.go_back
-        self.wv.load_url('file://sdf.org:70/')
+        self.wv.load_url('file://1_sdf.org:70/')
         
     @ui.in_background
     def go_tapped(self, sender):
         if "://" in self.ab.text:
             console.alert("Please don't use gopher:// or similar, just use host:port/selector")
         else:
-            self.wv.load_url("file://" + self.ab.text)
+            self.wv.load_url("file://1_" + self.ab.text)
     
     def go_back(self, sender):
         print("Go back called in main")
