@@ -5,7 +5,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{5, 5}, {936, 32}}",
+        "frame" : "{{5, 5}, {871, 32}}",
         "class" : "TextField",
         "attributes" : {
           "uuid" : "F9572F28-A018-4A81-807D-DA989712CD90",
@@ -43,7 +43,7 @@
           "name" : "goBtn",
           "flex" : "LB"
         },
-        "selected" : true
+        "selected" : false
       },
       {
         "nodes" : [
@@ -52,24 +52,44 @@
         "frame" : "{{0, 40}, {1024, 728}}",
         "class" : "WebView",
         "attributes" : {
-          "scales_to_fit" : true,
-          "frame" : "{{140, 60}, {200, 200}}",
           "flex" : "WH",
+          "frame" : "{{140, 60}, {200, 200}}",
+          "uuid" : "8D3E686A-6C24-4454-A0F2-FCDA3FDC356F",
           "class" : "WebView",
           "name" : "webview",
-          "uuid" : "8D3E686A-6C24-4454-A0F2-FCDA3FDC356F"
+          "scales_to_fit" : true
         },
         "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{884, 5}, {57, 32}}",
+        "class" : "Button",
+        "attributes" : {
+          "border_width" : 1,
+          "flex" : "LB",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "<",
+          "uuid" : "EA85C380-8870-4D33-9DAB-B429EE22F51F",
+          "class" : "Button",
+          "corner_radius" : 5,
+          "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "name" : "back_button",
+          "font_size" : 15
+        },
+        "selected" : true
       }
     ],
     "frame" : "{{0, 0}, {1024, 768}}",
     "class" : "View",
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "enabled" : true,
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "name" : "Gopher",
+      "enabled" : true,
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "flex" : ""
     },
     "selected" : false

@@ -21,6 +21,10 @@ class WebViewDelegate (object):
         </body>
     </html>
     """
+    history = []
+    
+    def __init__(self, main):
+        self.main = main
     
     def webview_should_start_load(self, webview, url, nav_type):
         print(url)
@@ -39,13 +43,13 @@ class WebViewDelegate (object):
         return True
         
     def webview_did_finish_load(self, webview):
-        print("Webview finished loading")
+        #print("Webview finished loading")
         pass
         
     def webview_did_fail_load(self, webview, error_code, error_msg):
-        print("webview failed")
-        print(error_code)
-        print(error_msg)
+        #print("webview failed")
+        #print(error_code)
+        #print(error_msg)
         pass
     
     def print_welcome(self, webview):
@@ -75,6 +79,10 @@ class WebViewDelegate (object):
         print("load_gopher")
         print(url)
         if url.startswith('file://'):
+            self.history.append(url)
+            self.main.ab.text = url[7:]
+            #lazy hack
+            self.wv = webview
             print("Loading gophers")
             item = self.parse_url(url)
             #item = GopherItem()
@@ -87,3 +95,13 @@ class WebViewDelegate (object):
             
             return True
         return False
+        
+    def go_back(self, sender):
+        print("Go back called")
+        for x in range(len(self.history)):
+            print(self.history[x])
+        print(len(self.history))
+        # get rid of the current url... this feels wrong, probably is
+        if len(self.history) > 1:
+            self.history.pop()
+            self.wv.load_url(self.history.pop())
