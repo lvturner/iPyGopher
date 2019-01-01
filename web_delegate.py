@@ -1,5 +1,6 @@
 import console
 import webbrowser
+import urllib
 from gopher_client import GopherClient
 from gopher_item import GopherItem
 
@@ -114,7 +115,7 @@ class WebViewDelegate (object):
                 console.alert("H")
                 return
             self.history.append(url)
-            self.main.ab.text = url[9:]
+            self.main.ab.text = urllib.parse.unquote(url[9:])
 
             g = GopherClient()
             

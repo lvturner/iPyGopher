@@ -1,5 +1,6 @@
 import socket
 import console
+import urllib
 from gopher_item import GopherItem
 
 
@@ -53,7 +54,7 @@ class GopherClient(object):
         PORT = int(port)              # The same port as used by the server
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
-            s.sendall(str(selector + '\r\n').encode())
+            s.sendall(str(urllib.parse.unquote(selector) + '\r\n').encode())
             data = b''
             while True:
                 temp = s.recv(1024)
