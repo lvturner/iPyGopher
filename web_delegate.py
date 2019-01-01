@@ -34,7 +34,10 @@ class WebViewDelegate (object):
     def webview_should_start_load(self, webview, url, nav_type):
         print(url)
         if "file://URL:" in url:
-            url = url.replace("file://URL:", 'safari-')
+            if "URL:http" in url:
+                url = url.replace("file://URL:", 'safari-')
+            else:
+                url = url.replace("file://URL:", '')
             webbrowser.open(url)
             return False
         self.url = url
